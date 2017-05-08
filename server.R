@@ -17,31 +17,34 @@ library(ggplot2)
 library(plotly)
 library(lubridate)
 
+#checkboxgroupinput()
+#plotOutput()
+# server: need a render object, e.g. renderPlot()
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
   bikeCount <- reactive({
-    input$date1
-    input$CNTDIR
-    isolate({
-      bike_philly %>%
-        subset(UPDATED >= as.POSIXlt(input$date1[1])) %>%
-        subset(UPDATED <= as.POSIXlt(input$date1[2])) %>%
-        direction_subset(as.character(input$CNTDIR))
-    })
+    input$hour
+    input$hourOfDay
+    #isolate({
+    capital_hourly %>%
+      subset(UPDATED >= as.POSIXlt(input$hour[1])) %>%
+      subset(UPDATED <= as.POSIXlt(input$hour[2]))
+    #})
   })
   
   observe({
-    input$date1 # any change on map will update in ggplot
+    #input$hour # any change on map will update in ggplot
     
-    updateDateRangeInput(session, "date1",
+    updateDateRangeInput(session, "hour",
                          "Select dates to visualize.",
-                         start = input$date1[1],
-                         end = input$date1[2],
-                         min = min(bike_philly$UPDATED), max = max(bike_philly$UPDATED))
+                         start = input$hour[1],
+                         end = input$hour[2],
+                         min = min(capital_hourly$UPDATED), max = max(capital_hourly$UPDATED))
   })
   
   observe({
-    input$date2 #any change in ggplot will reflect on map
+    input$month #any change in ggplot will reflect on map
     
     updateDateRangeInput(session, "date2",
                          "Select dates to visualize.",
@@ -57,7 +60,7 @@ shinyServer(function(input, output, session) {
   # })
   
   output$bike_count_map <- renderLeaflet({
-    filtered_bike() %>%
+    bikeCount() %>%
       leaflet() %>%
       setView(lng = "-89.384661", lat = "43.076569", zoom = 11) %>% 
       addTiles() %>%
@@ -91,17 +94,17 @@ shinyServer(function(input, output, session) {
   #     labs(title = 'Bike Counts per Municipalities', x="Municipality names",y="Bike counts") +
   #     theme_gray() + theme(axis.text.x = element_text(angle = 45, hjust = 1),legend.position="none")
   # })
-  
-  output$total_count <- renderText({
-    as.character(sum(filtered_bike()$AADB))
-  })
-  
-  output$popular_area <- renderText({
-    names(tail(sort(table(filtered_bike()$TOLMT)), 1))
-    #filtered_bike()$MUN_NAME[which(filtered_bike()$),]
-  })
-  
-  output$muni <- renderText({
-    names(tail(sort(table(filtered_bike()$MUN_NAME)), 1))
-  })
+  # 
+  # output$total_count <- renderText({
+  #   as.character(sum(filtered_bike()$AADB))
+  # })
+  # 
+  # output$popular_area <- renderText({
+  #   names(tail(sort(table(filtered_bike()$TOLMT)), 1))
+  #   #filtered_bike()$MUN_NAME[which(filtered_bike()$),]
+  # })
+  # 
+  # output$muni <- renderText({
+  #   names(tail(sort(table(filtered_bike()$MUN_NAME)), 1))
+  # })
 })
