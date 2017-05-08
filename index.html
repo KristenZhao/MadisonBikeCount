@@ -2,15 +2,34 @@
 <html>
   <head>
     <title>Bike Smart</title>
+    <meta charset=utf-8 />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <!-- <link rel="stylesheet" href="reset.css" /> -->
+    <link rel="stylesheet" href="leaflet.css" />
+    <link href='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.css' rel='stylesheet' />
+    <link rel='stylesheet' href='style.css' />
   </head>
   <body>
-    <div class='title'><h2>Madison Bike Count Visualization</h2>
+    <div class='title'>
+      <h2> Madison Bike Count Visualization</h2>
+      <p> There are two bike counters in Madison, WI, a super bike friendly city.
+        This app aims to let you visualize how often people use the Capital City
+        Bike Trail and what the usage pattern is. </p>
+    </div>
     <div class="sidebar">
-
+      <header>
+        <h3> Widgets </h3>
+      </header>
+      <div id="selectByHour">
+        <p>select by hour placeholder</p>
+      </div>
     </div>
-    <div class="map">
+    <div class="map" id="map">
     </div>
-
-
+    <script src="leaflet.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src='jquery-2.2.0.js'></script>
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.js'></script>
+    <script src='mainFunctions.js'></script>
   </body>
 </html>
