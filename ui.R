@@ -55,21 +55,24 @@ dashboardPage(
                 column(width = 4,
                        box(width = NULL,
                            checkboxGroupInput('hourOfDay', 'Select the hours of day you are interested', 
-                                              choices = c(0:23), selected = NULL, inline = TRUE)
+                                              choices = c(0:23), selected = NULL, inline = TRUE),
+                           actionButton(inputId='doneButton',label = 'Done')
                            )
                        ),
                 column(width = 4,
                        box(width = NULL,
                            checkboxGroupInput('dayOfWeek', 'Select the days of week you are interested',
                                               choices = c('Mon','Tue','Wed','Thu','Fri','Sat','Sun'),
-                                              selected = NULL, inline = FALSE)
+                                              selected = NULL, inline = FALSE),
+                           actionButton(inputId='doneButton',label = 'Done')
                            )
                        ),
                 column(width = 4,
                         box(width = NULL,
                             checkboxGroupInput('monthOfYear', 'Select the months of year you are interested',
                                                choices = c(1:12), inline = TRUE
-                                               )
+                                               ),
+                            actionButton(inputId='doneButton',label = 'Done')
                             )
                        )
                    )
