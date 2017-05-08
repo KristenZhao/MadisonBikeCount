@@ -39,35 +39,35 @@ dashboardPage(
                 column(width= 12,
                        box(width = NULL))
               )
-      ),
-      tabItem(tabName = "graphs",
-              fluidRow(
-                column(width = 6,
-                       box(width = NULL,
-                           plotlyOutput("capitalGraph"))),
-                column(width = 6,
-                       box(width = NULL,
-                           plotlyOutput("monroeGraph")
-                       )
-                )
-              ),
-              fluidRow(
-                column(width = 12,
-                       box(width = NULL,
-                           selectInput('hourOfDay', 'Select the hours you are interested', 
-                                       choices = c(0:23), 
-                                       selected = NULL, multiple = TRUE,
-                                       selectize = FALSE, width = NULL, size = NULL)
-                           ))
-              ),
-      tabItem(tabName = "about",
-              fluidRow(
-                column(width = 12,
-                       box(width = NULL,
-                           includeMarkdown("about.md")))
-              )
       )
-      )
+#       tabItem(tabName = "graphs",
+#               fluidRow(
+#                 column(width = 6,
+#                        box(width = NULL,
+#                            plotlyOutput("capitalGraph"))),
+#                 column(width = 6,
+#                        box(width = NULL,
+#                            plotlyOutput("monroeGraph")
+#                        )
+#                 )
+#               ),
+#               fluidRow(
+#                 column(width = 12,
+#                        box(width = NULL,
+#                            selectInput('hourOfDay', 'Select the hours you are interested', 
+#                                        choices = c(0:23), 
+#                                        selected = NULL, multiple = TRUE,
+#                                        selectize = FALSE, width = NULL, size = NULL)
+#                            ))
+#               ),
+#       tabItem(tabName = "about",
+#               fluidRow(
+#                 column(width = 12,
+#                        box(width = NULL,
+#                            includeMarkdown("about.md")))
+#               )
+#       )
+#       )
 )
 )
 )
