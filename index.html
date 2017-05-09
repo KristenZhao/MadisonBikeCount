@@ -3,38 +3,106 @@
   <head>
     <title>Bike Smart</title>
     <meta charset=utf-8 />
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/leaflet.css" />
+    <!-- <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' /> -->
+    <!-- <link rel="stylesheet" href="css/reset.css" /> -->
+    <!-- <link rel="stylesheet" href="css/leaflet.css" /> -->
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <!-- <link href='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.css' rel='stylesheet' /> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.css" />
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.css" /> -->
+    <link rel='stylesheet' href="css/jquery.multiselect.css" />
+    <link rel='stylesheet' href='css/jquery-ui.css' />
+    <!-- <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" /> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.2.3/leaflet.draw.css" /> -->
     <link rel='stylesheet' href='css/style.css' />
   </head>
   <body>
     <div class='title'>
       <h2> Madison Bike Count Visualization</h2>
-      <p> There are two bike counters in Madison, WI, a super bike friendly city.
-        This app aims to let you visualize how often people use the Capital City
-        Bike Trail and what the usage pattern is. </p>
+      <p> Madison has very cold weather which often makes biking challenging,
+        but it has wonderful bike trails. When would people be more likely to use
+        them? I want to find out the answer from two bike counters located at
+        North Shore Drive and Monroe Street respectively. This application allows
+        users to visualize bike traffic count for the entire year of 2016.</p>
     </div>
     <div class="sidebar">
       <header>
         <h3> Widgets </h3>
       </header>
       <div id="selectByHour">
-        <p>select by hour placeholder</p>
+        <p> Please select the hours of day that you are interested </p>
+        <select id="hour-of-day" multiple="multiple">
+          <option value="0">0 am</option>
+          <option value="1">1 am</option>
+          <option value="2">2 am</option>
+          <option value="3">3 am</option>
+          <option value="4">4 am</option>
+          <option value="5">5 am</option>
+          <option value="6">6 am</option>
+          <option value="7">7 am</option>
+          <option value="8">8 am</option>
+          <option value="9">9 am</option>
+          <option value="10">10 am</option>
+          <option value="11">11 am</option>
+          <option value="12">12 pm</option>
+          <option value="13">1 pm</option>
+          <option value="14">2 pm</option>
+          <option value="15">3 pm</option>
+          <option value="16">4 pm</option>
+          <option value="17">5 pm</option>
+          <option value="18">6 pm</option>
+          <option value="19">7 pm</option>
+          <option value="20">8 pm</option>
+          <option value="21">9 pm</option>
+          <option value="22">10 pm</option>
+          <option value="23">11 pm</option>
+        </select>
+      </div>
+      <div id='selectByDay'>
+        <p> Please select the days of week that you are interested </p>
+        <select id="day-of-week" name="example" multiple="multiple">
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+          <option value="7">Sunday</option>
+        </select>
+      </div>
+      <div id='selectByMonth'>
+        <p> Please select the months of year that you are interested </p>
+        <select id="month-of-year" name="example" multiple="multiple">
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+      <div id='clear-selection'>
+        <button>Clear Selection</button>
       </div>
     </div>
     <div class="map" id="map">
     </div>
-    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
     <script src='js/jquery-2.2.0.js'></script>
-    <script src="js/torque.full.js"></script>
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <!-- <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script> -->
+    <script src="js/torque.full.js"></script>
     <!-- <script src='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.js'></script> -->
     <script src='js/moment.min.js'></script>
+    <script src='js/jquery-ui.min.js'></script>
+    <script src='js/jquery.multiselect.min.js'></script>
     <script src='js/mainFunctions.js'></script>
   </body>
 </html>

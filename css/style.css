@@ -35,7 +35,18 @@ h3 {
 p {
   margin-left:13px;
   margin-right: 13px;
+  margin-top: 10px;
 }
 h2 {
   margin: 5px 0px -13px 13px;
+}
+
+.ui-multiselect {
+  position: static;
+  margin-left: 10px;
+  margin-bottom: 16px;
+}
+
+#clear-selection {
+  margin-left: 10px;
 }
